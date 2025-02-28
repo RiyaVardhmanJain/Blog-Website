@@ -1,10 +1,12 @@
 <?php
 include 'connect.php';
-$select = "SELECT * FROM categories";
+$select = "SELECT * FROM categories";	
 $query =mysqli_query($config,$select);
 //recent posts
-$select2 = "SELECT * FROM blog ORDER BY publish_date limit 5";
+$select2 = "SELECT * FROM blog ORDER BY publish_date DESC LIMIT 5";
+
 $query2 =mysqli_query($config,$select2);
+
 
 ?>
 <div class="col-lg-4">
@@ -25,7 +27,7 @@ $query2 =mysqli_query($config,$select2);
 						<ul>
 						<?php while($posts=mysqli_fetch_assoc($query2)){?>
 							<li> 
-							<a href="single_post.php?id=<?= $posts['blog_id']; ?>" class="text-primary fw-bold"><?= $posts['blog_title']; ?></a>
+							<a href="single_post.php?id=<?= $posts['blog_id'];?>" class="text-primary fw-bold"><?=$posts['blog_title'];?></a>
 							</li>
 							<?php } ?>
 						</ul>
@@ -33,3 +35,4 @@ $query2 =mysqli_query($config,$select2);
 				</div>
 			</div>
 		</div>
+	
